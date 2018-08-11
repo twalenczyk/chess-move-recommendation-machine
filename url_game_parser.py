@@ -4,6 +4,9 @@ from board import Board
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
+def parse_piece_tags(tags):
+    print(pieces)
+
 def main():
     # grab the webpage
     url = sys.argv[1]
@@ -15,7 +18,7 @@ def main():
     # translate_index = 64
     # grab the pieces
     pieces = soup.find_all('piece')
-    print(pieces)
+    parse_piece_tags(pieces)
 
     # build chess board
 
