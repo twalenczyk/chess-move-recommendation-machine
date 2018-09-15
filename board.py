@@ -7,13 +7,21 @@ class Board:
     ranks = []
 
     # methods
-    def __init__(self):
-        for i in range(self.CONST_NUM_RANKS):
-            if i % 2 == 0:
-                self.ranks.append('X0X0X0X0')
-            else:
-                self.ranks.append('0X0X0X0X')
+    def __init__(self, pieces):
+        # generate board
+        self.ranks = [
+                    [
+                        '' for _ in range(self.CONST_NUM_RANKS)
+                        ]
+                    for _ in range(self.CONST_NUM_RANKS)
+                ]
+
+        # add pieces
+        for piece in pieces:
+            x_cord = piece.x_cord % 64
+            y_cord = piece.y_cord % 64
+            self.ranks[x_cord][y_cord] = piece.get_rep()
 
     def print_board(self):
-        for i in range(self.CONST_NUM_RANKS):
-            print(self.ranks[i])
+        for rank in self.ranks:
+            print(rank)

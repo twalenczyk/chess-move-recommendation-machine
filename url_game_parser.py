@@ -8,10 +8,11 @@ from piece import Piece
 # returns a list of pieces
 def parse_piece_tags(tags):
     ret = []
-    for i in range(len(tags)):
-        cur = tags[i]
-        if cur['class'][0] != 'ghost':
-            ret.append(Piece(cur['class'][0], cur['class'][1]))
+    for tag in tags:
+        print(tag['style'].split(' ')[1].split('(')[1])
+        lead_tag = tag['class'][0]
+        if lead_tag != 'ghost':
+            ret.append(Piece(lead_tag, tag['class'][1]))
     return ret
 
 def main():
@@ -28,6 +29,8 @@ def main():
     pieces = parse_piece_tags(piece_tags)
 
     # build chess board
+    b = Board(pieces)
+    b.print_board()
 
 
 
